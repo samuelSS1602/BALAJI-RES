@@ -37,6 +37,8 @@
             padding: 40px 30px;
             text-align: center;
             position: relative;
+            /* Add spacing between header and content */
+            margin-bottom: 30px;
         }
 
         .header::before {
@@ -77,14 +79,21 @@
         }
 
         .main-content {
-            padding: 40px;
+            padding: 0; /* Remove padding since we added it to main-wrapper */
+            flex: 1;
+        }
+
+        .main-wrapper {
+            display: flex;
+            gap: 30px; /* Increase gap between sidebar and main content */
+            padding: 0 30px; /* Add padding on sides */
         }
 
         .form-section {
             background: #fafbfc;
             border-radius: 12px;
             padding: 35px;
-            margin-bottom: 30px;
+            margin-bottom: 40px; /* Increase bottom margin */
             border: 1px solid #e2e8f0;
             box-shadow: 0 4px 16px rgba(45, 55, 72, 0.04);
         }
@@ -113,8 +122,8 @@
         .form-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 30px;
+            gap: 30px; /* Increase gap between form elements */
+            margin-bottom: 35px;
         }
 
         .form-group {
@@ -156,7 +165,10 @@
 
         .btn-container {
             text-align: center;
-            margin-top: 30px;
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
         }
 
         .btn {
@@ -191,11 +203,7 @@
         }
 
         .bookings-section {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 35px;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 16px rgba(45, 55, 72, 0.04);
+            margin-bottom: 40px; /* Add consistent spacing */
         }
 
         .bookings-header {
@@ -226,7 +234,7 @@
             background: linear-gradient(135deg, #fafbfc 0%, #f7fafc 50%);
             border-radius: 12px;
             padding: 28px;
-            margin-bottom: 24px;
+            margin-bottom: 30px; /* Increase spacing between cards */
             border-left: 4px solid #4a5568;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 4px 16px rgba(45, 55, 72, 0.06);
@@ -237,6 +245,10 @@
             transform: translateY(-3px);
             box-shadow: 0 12px 32px rgba(45, 55, 72, 0.12);
             border-left-color: #2d3748;
+        }
+
+        .booking-card:last-child {
+            margin-bottom: 0; /* Remove margin from last card */
         }
 
         .booking-header {
@@ -329,8 +341,8 @@
         .stats-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 24px;
-            margin-bottom: 35px;
+            gap: 30px;
+            margin-bottom: 40px;
         }
 
         .stat-card {
@@ -362,6 +374,97 @@
             letter-spacing: 0.5px;
         }
 
+        .main-wrapper {
+            display: flex;
+            gap: 30px; /* Increase gap between sidebar and main content */
+            padding: 0 30px; /* Add padding on sides */
+        }
+
+        .sidebar {
+            width: 300px;
+            flex-shrink: 0;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px rgba(45, 55, 72, 0.08);
+            overflow: hidden;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+
+        .sidebar-section {
+            padding: 25px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .sidebar-section:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .room-status {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #f7fafc;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .room-status:hover {
+            transform: translateX(5px);
+            background: #edf2f7;
+        }
+
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 12px;
+        }
+
+        .available {
+            background: #48bb78;
+        }
+
+        .occupied {
+            background: #e53e3e;
+        }
+
+        .report-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            padding: 12px;
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            color: #2d3748;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .report-btn:hover {
+            background: #edf2f7;
+            transform: translateX(5px);
+        }
+
         @media (max-width: 768px) {
             .form-grid {
                 grid-template-columns: 1fr;
@@ -389,6 +492,17 @@
                 font-size: 2.2rem;
             }
         }
+
+        @media (max-width: 1024px) {
+    .main-wrapper {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        position: static;
+    }
+}
     </style>
 </head>
 <body>
@@ -398,95 +512,121 @@
             <p>A Serene Stay, Close to the Divine</p>
         </div>
 
-        <div class="main-content">
-            <!-- Statistics Section -->
-            <div class="stats-container">
-                <div class="stat-card">
-                    <div class="stat-number" id="totalBookings">0</div>
-                    <div class="stat-label">Total Bookings</div>
+        <div class="main-wrapper">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">📊 Reports</h3>
+                    <button class="report-btn" onclick="generateDailyReport()">
+                        📅 Daily Report
+                    </button>
+                    <button class="report-btn" onclick="generateWeeklyReport()">
+                        📆 Weekly Report
+                    </button>
+                    <button class="report-btn" onclick="generateMonthlyReport()">
+                        📈 Monthly Report
+                    </button>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number" id="totalRevenue">₹0</div>
-                    <div class="stat-label">Total Revenue</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" id="occupiedRooms">0</div>
-                    <div class="stat-label">Occupied Rooms</div>
+                
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">🏠 Room Status</h3>
+                    <div id="roomStatusList">
+                        <!-- Room status will be populated here -->
+                    </div>
                 </div>
             </div>
 
-            <!-- Booking Form Section -->
-            <div class="form-section">
-                <h2 class="form-title">Add New Booking</h2>
-                <form id="bookingForm">
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="roomNumber">Room Number</label>
-                            <input type="text" id="roomNumber" required placeholder="e.g., 101, 205, A-301">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="customerName">Customer Name</label>
-                            <input type="text" id="customerName" required placeholder="Enter full name">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Check-in & Check-out Date</label>
-                            <div class="date-range">
-                                <input type="date" id="checkInDate" required>
-                                <input type="date" id="checkOutDate" required>
+            <!-- Existing main content -->
+            <div class="main-content">
+                <!-- Statistics Section -->
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalBookings">0</div>
+                        <div class="stat-label">Total Bookings</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalRevenue">₹0</div>
+                        <div class="stat-label">Total Revenue</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="occupiedRooms">0</div>
+                        <div class="stat-label">Occupied Rooms</div>
+                    </div>
+                </div>
+
+                <!-- Booking Form Section -->
+                <div class="form-section">
+                    <h2 class="form-title">Add New Booking</h2>
+                    <form id="bookingForm">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="roomNumber">Room Number</label>
+                                <input type="text" id="roomNumber" required placeholder="e.g., 101, 205, A-301">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="customerName">Customer Name</label>
+                                <input type="text" id="customerName" required placeholder="Enter full name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Check-in & Check-out Date</label>
+                                <div class="date-range">
+                                    <input type="date" id="checkInDate" required>
+                                    <input type="date" id="checkOutDate" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="amount">Amount (₹)</label>
+                                <input type="number" id="amount" required placeholder="Enter booking amount" min="0">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="mobileNumber">Mobile Number</label>
+                                <input type="tel" id="mobileNumber" required placeholder="10-digit mobile number" pattern="[0-9]{10}">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="aadharNumber">Aadhar Number</label>
+                                <input type="text" id="aadharNumber" required placeholder="12-digit Aadhar number" pattern="[0-9]{12}">
                             </div>
                         </div>
                         
-                        <div class="form-group">
-                            <label for="amount">Amount (₹)</label>
-                            <input type="number" id="amount" required placeholder="Enter booking amount" min="0">
+                        <div class="btn-container">
+                            <button type="submit" class="btn">Add Booking</button>
+                            <button type="button" class="btn btn-clear" onclick="clearForm()">Clear Form</button>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="mobileNumber">Mobile Number</label>
-                            <input type="tel" id="mobileNumber" required placeholder="10-digit mobile number" pattern="[0-9]{10}">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="aadharNumber">Aadhar Number</label>
-                            <input type="text" id="aadharNumber" required placeholder="12-digit Aadhar number" pattern="[0-9]{12}">
-                        </div>
-                    </div>
-                    
-                    <div class="btn-container">
-                        <button type="submit" class="btn">Add Booking</button>
-                        <button type="button" class="btn btn-clear" onclick="clearForm()">Clear Form</button>
-                    </div>
-                </form>
-            </div>
+                    </form>
+                </div>
 
-            <!-- Bookings Display Section -->
-            <div class="bookings-section">
-                <div class="bookings-header">
-                    <h2 class="bookings-title">Current Bookings</h2>
-                    <span class="booking-count" id="bookingCount">0 Bookings</span>
-                </div>
-                <div id="bookingsList">
-                    <div class="empty-state">
-                        <div style="font-size: 4rem; margin-bottom: 20px;">🏨</div>
-                        <h3>No bookings yet</h3>
-                        <p>Add your first booking using the form above</p>
+                <!-- Bookings Display Section -->
+                <div class="bookings-section">
+                    <div class="bookings-header">
+                        <h2 class="bookings-title">Current Bookings</h2>
+                        <span class="booking-count" id="bookingCount">0 Bookings</span>
+                    </div>
+                    <div id="bookingsList">
+                        <div class="empty-state">
+                            <div style="font-size: 4rem; margin-bottom: 20px;">🏨</div>
+                            <h3>No bookings yet</h3>
+                            <p>Add your first booking using the form above</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Booking Ledger Section -->
-            <div class="bookings-section" style="margin-top:30px;">
-                <div class="bookings-header">
-                    <h2 class="bookings-title">Booking Ledger</h2>
-                    <span class="booking-count" id="ledgerCount">0 Records</span>
-                </div>
-                <div id="ledgerList">
-                    <div class="empty-state">
-                        <div style="font-size: 3rem; margin-bottom: 20px;">📒</div>
-                        <h3>No booking history yet</h3>
-                        <p>All bookings (including deleted) will appear here</p>
+                <!-- Booking Ledger Section -->
+                <div class="bookings-section" style="margin-top:30px;">
+                    <div class="bookings-header">
+                        <h2 class="bookings-title">Booking Ledger</h2>
+                        <span class="booking-count" id="ledgerCount">0 Records</span>
+                    </div>
+                    <div id="ledgerList">
+                        <div class="empty-state">
+                            <div style="font-size: 3rem; margin-bottom: 20px;">📒</div>
+                            <h3>No booking history yet</h3>
+                            <p>All bookings (including deleted) will appear here</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -497,6 +637,19 @@
         let bookings = [];
         let bookingLedger = [];
         let bookingIdCounter = 1;
+
+        // Define available rooms
+const totalRooms = {
+    "101": "available",
+    "102": "available",
+    "103": "available",
+    "201": "available",
+    "202": "available",
+    "203": "available",
+    "301": "available",
+    "302": "available",
+    "303": "available"
+};
 
         // Initialize date inputs with today's date
         document.addEventListener('DOMContentLoaded', function() {
@@ -755,6 +908,76 @@
             // Remove non-letters and spaces, then convert to uppercase
             this.value = this.value.replace(/[^A-Za-z\s]/g, '').toUpperCase();
         });
+
+        // Update the existing displayBookings function to call updateRoomStatus
+const originalDisplayBookings = displayBookings;
+displayBookings = function() {
+    originalDisplayBookings();
+    updateRoomStatus();
+};
+
+        function updateRoomStatus() {
+    const roomStatusList = document.getElementById('roomStatusList');
+    let html = '';
+    
+    for (let room in totalRooms) {
+        const isOccupied = bookings.some(booking => booking.roomNumber === room);
+        totalRooms[room] = isOccupied ? "occupied" : "available";
+        
+        html += `
+            <div class="room-status">
+                <span class="status-indicator ${totalRooms[room]}"></span>
+                <span>Room ${room}</span>
+                <span style="margin-left: auto; color: ${totalRooms[room] === 'available' ? '#48bb78' : '#e53e3e'}">
+                    ${totalRooms[room].charAt(0).toUpperCase() + totalRooms[room].slice(1)}
+                </span>
+            </div>
+        `;
+    }
+    
+    roomStatusList.innerHTML = html;
+}
+
+function generateDailyReport() {
+    const today = new Date().toISOString().split('T')[0];
+    const dailyBookings = bookings.filter(booking => booking.checkInDate === today);
+    const dailyRevenue = dailyBookings.reduce((sum, booking) => sum + booking.amount, 0);
+    
+    alert(`Daily Report (${formatDate(today)})
+    New Bookings: ${dailyBookings.length}
+    Revenue: ₹${dailyRevenue.toLocaleString()}`);
+}
+
+function generateWeeklyReport() {
+    const today = new Date();
+    const lastWeek = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
+    const weeklyBookings = bookings.filter(booking => 
+        new Date(booking.checkInDate) >= lastWeek && new Date(booking.checkInDate) <= today
+    );
+    const weeklyRevenue = weeklyBookings.reduce((sum, booking) => sum + booking.amount, 0);
+    
+    alert(`Weekly Report (${formatDate(lastWeek)} - ${formatDate(today)})
+    Total Bookings: ${weeklyBookings.length}
+    Revenue: ₹${weeklyRevenue.toLocaleString()}`);
+}
+
+function generateMonthlyReport() {
+    const today = new Date();
+    const lastMonth = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
+    const monthlyBookings = bookings.filter(booking => 
+        new Date(booking.checkInDate) >= lastMonth && new Date(booking.checkInDate) <= today
+    );
+    const monthlyRevenue = monthlyBookings.reduce((sum, booking) => sum + booking.amount, 0);
+    
+    alert(`Monthly Report (${formatDate(lastMonth)} - ${formatDate(today)})
+    Total Bookings: ${monthlyBookings.length}
+    Revenue: ₹${monthlyRevenue.toLocaleString()}`);
+}
+
+// Call updateRoomStatus on page load
+document.addEventListener('DOMContentLoaded', function() {
+    updateRoomStatus();
+});
 
         // Call displayLedger on page load
         document.addEventListener('DOMContentLoaded', function() {
